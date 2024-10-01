@@ -114,7 +114,7 @@ function cache() {
   mkdir -p "${CACHE_PREFIX}"
   TAR_FILE="${CACHE_PREFIX}/${CACHE_KEY}.${BK_TAR_EXTENSION}"
 
-  if [ $BK_ALWAYS_CACHE == "true" ]; then
+  if [ "${BK_ALWAYS_CACHE}" == "true" ]; then
     echo -e "${BK_LOG_PREFIX}🗄️🗑️ Removing previously found cache ${TAR_FILE} since always is true."
     rm -f "${TAR_FILE}"
   fi

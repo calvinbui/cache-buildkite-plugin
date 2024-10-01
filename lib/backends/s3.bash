@@ -153,7 +153,7 @@ function cache() {
 
   cache_locating "${TAR_TARGETS}"
 
-  if [ ${BK_ALWAYS_CACHE} == "true" ]; then
+  if [ "${BK_ALWAYS_CACHE}" == "true" ]; then
     echo -e "${BK_LOG_PREFIX}🗄️🗑️ Removing previously found cache ${TAR_FILE} since always is true."
     rm -f "${TAR_FILE}"
   fi
