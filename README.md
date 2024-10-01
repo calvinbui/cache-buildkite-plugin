@@ -529,7 +529,9 @@ For tarballs, To keep caches and delete them in _for example_ 7 days, use `max: 
 
 For S3, As long as you use Lifcecycle policy (AWS and Scaleway supports this feature) you will only have caches for number of days you specify in your Lifecycle policy terms. This will allows you to invalidate old caches and save some storage costs.
 
-## Always upload Cache
+## Skip downloading/uploading or always upload cache
+
+Use `skip-download` and `skip-upload` to have the plugin skip downloading or uploading the cache. This is useful for PRs to only download the default branch's cache, but not overwrite it.
 
 There are some cases where you want to process the cache no matter of what. In this scenario, use `always` option and set it to `true` (Defaults to `false`):
 
@@ -550,6 +552,8 @@ steps:
           - 'v1-cache-{{ id }}-'
         compress: 2 # fast compression.
         always: true # Optional. Always process the cache and upload. Defaults to `false`
+        skip-download: false # Optional. Skip downloading the cache. Defaults to `false`
+        skip-upload: true # Optional. Skip uploading the cache. Defaults to `false`. Takes precedence over `always: true` and `pr: true`.
         s3:
           bucket: s3-bucket
         paths:

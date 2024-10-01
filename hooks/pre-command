@@ -26,6 +26,11 @@ if [[ "${BUILDKITE_PLUGIN_CACHE_DEBUG:-false}" =~ (true|on|1) ]]; then
   set -x
 fi
 
+if [[ "${BUILDKITE_PLUGIN_CACHE_SKIP_DOWNLOAD:-false}" =~ (true|on|1) ]]; then
+  echo -e "${BK_LOG_PREFIX}⏭️ Skipping download of cache as configured"
+  exit 0
+fi
+
 if [[ "${BUILDKITE_PLUGIN_CACHE_PR:-true}" =~ (false|off|0) ]]; then
   if [[ ! "${BUILDKITE_PULL_REQUEST:-false}" =~ (false) ]]; then
     echo -e "${BK_LOG_PREFIX}PR Detected. Skipping..."

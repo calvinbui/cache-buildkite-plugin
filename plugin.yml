@@ -23,6 +23,10 @@ configuration:
       type: boolean
     always:
       type: boolean
+    skip-download:
+      type: boolean
+    skip-upload:
+      type: boolean
     pipeline-slug-override:
       type: string
     pr:
